@@ -1,13 +1,20 @@
 var http = require("http");
-http.createServer(function (request, response) {
-    // Send the HTTP header 
-    // HTTP Status: 200 : OK
-    // Content Type: text/plain
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    
-    // Send the response body as "Hello World"
-    response.end('Hello World\n');
- }).listen(8081);
- 
- // Console will print the message
- console.log('Server running at http://127.0.0.1:8081/');
+const express = require('express')
+
+const app = express()
+
+//Middleware...
+app.use(express.json())
+app.get('/',function (req,res){
+    res.end('<h1>This is Home page</h1>')
+
+});
+
+ const PORT = process.env.PORT || 1010
+app.listen(PORT, function (err) {
+    if (err){
+        console.log(err)
+    }else {
+    console.log('Server is running on port: ' + PORT)
+    }
+})
