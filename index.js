@@ -1,9 +1,14 @@
 const express = require('express')
 const { json } = require("body-parser");
 const app = express()
-
+const RtcToken = require('./rtc_token');
 //Middleware...
 app.use(express.json())
+
+app.get('/generateToken',function (req,res){
+    RtcToken.generateRtcToken(req, res);
+});
+
 app.get('/',function (req,res){
     res.end('<h1>This is Home page</h1>')
 
