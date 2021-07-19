@@ -2,9 +2,10 @@ const express = require('express')
 const { json } = require("body-parser");
 const app = express()
 const RtcToken = require('./rtc_token');
+const FCM = require('./fcm/fcmController')
 //Middleware...
 app.use(express.json())
-
+app.use("/fcm", FCM);
 app.get('/generateToken',function (req,res){
     RtcToken.generateRtcToken(req, res);
 });

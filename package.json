@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "agora-access-token": "^2.0.4",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "firebase-admin": "^9.11.0"
   },
   "devDependencies": {},
   "scripts": {

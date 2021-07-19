@@ -1,5 +1,5 @@
 const {RtcTokenBuilder, RtmTokenBuilder, RtcRole, RtmRole} = require('agora-access-token')
-
+const AdminSend = require('./fcm/admin_send_notfication')
 
 
 
@@ -30,6 +30,15 @@ console.log("Token With UserAccount: " + tokenB);
 
 res.json({"token": tokenB});
 res.end();
+
+var data = req.data;
+var title = data.title;
+var call_token = data.call_token;
+var body = data.body;
+var channel_name = data.channel_name;
+var tokens = data.tokens;
+
+AdminSend.sendFcmNotification(req, res, title, call_token, channel_name, body, tokens);
 
     }
 }
