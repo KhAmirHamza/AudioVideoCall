@@ -6,7 +6,7 @@ const FCM = require('./fcm/fcmController')
 //Middleware...
 app.use(express.json())
 app.use("/fcm", FCM);
-app.get('/generateToken',function (req,res){
+app.post('/generateToken',function (req,res){
     RtcToken.generateRtcToken(req, res);
 });
 

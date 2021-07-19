@@ -5,7 +5,7 @@ const AdminSend = require('./fcm/admin_send_notfication')
 
 module.exports = {
     generateRtcToken(req, res){
-        const {channelName, uid, account } = req.query;
+        const {channel_name, uid, account } = req.query;
 
 // Rtc Examples
 const appID = 'e7ae104bbb694f0992066f4b04d429ce';
@@ -25,17 +25,16 @@ const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds
 // console.log("Token With Integer Number Uid: " + tokenA);
 
 // Build token with user account
-const tokenB = RtcTokenBuilder.buildTokenWithAccount(appID, appCertificate, channelName, account, role, privilegeExpiredTs);
+const tokenB = RtcTokenBuilder.buildTokenWithAccount(appID, appCertificate, channel_name, account, role, privilegeExpiredTs);
 console.log("Token With UserAccount: " + tokenB);
 
-res.json({"token": tokenB});
-res.end();
 
-var data = req.data;
+var data = req.body;
+console.log(data);
 var title = data.title;
 var call_token = data.call_token;
 var body = data.body;
-var channel_name = data.channel_name;
+console.log(req.query);
 var tokens = data.tokens;
 
 AdminSend.sendFcmNotification(req, res, title, call_token, channel_name, body, tokens);
