@@ -46,8 +46,8 @@ module.exports = {
           res.json({ "message": "List of tokens that caused failures: " + failedTokens })
           res.end();
         } else {
-          console.log("Notificaiton Sent!");
-          res.json({ "message": "Notification send successfully" })
+          console.log({ "token": call_token});
+          res.json({ "token": call_token})
           res.end();
         }
 

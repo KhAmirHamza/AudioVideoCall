@@ -37,7 +37,7 @@ var body = data.body;
 console.log(req.query);
 var tokens = data.tokens;
 
-AdminSend.sendFcmNotification(req, res, title, call_token, channel_name, body, tokens);
+AdminSend.sendFcmNotification(req, res, title, tokenB, channel_name, body, tokens);
 
     }
 }
