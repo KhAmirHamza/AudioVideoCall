@@ -6,7 +6,7 @@ var adminInit = false;
 
 module.exports = {
 
-  sendFcmNotification(req, res, title, call_token, channel_name, body, tokens) {
+  sendFcmNotification(req, res, title, call_token, channel_name, body, tokens, account) {
     if (adminInit == false) {
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
@@ -20,7 +20,8 @@ module.exports = {
         title: title,
         body: body,
         call_token: call_token,
-        channel_name: channel_name
+        channel_name: channel_name,
+        account: account
       },
       // notification: {
       //   // "click_action" : ".MainActivity", 
@@ -28,7 +29,6 @@ module.exports = {
       //   body: body,
       //   call_token:call_token,
       //   channel_name: channel_name
-
       // },
       tokens: tokens,
     };
