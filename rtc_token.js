@@ -20,13 +20,13 @@ const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds
 
 // IMPORTANT! Build token with either the uid or with the user account. Comment out the option you do not want to use below.
 
-// // Build token with uid
-// const tokenA = RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channelName, uid, role, privilegeExpiredTs);
-// console.log("Token With Integer Number Uid: " + tokenA);
+ // Build token with uid
+const tokenA = RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel_name, uid, role, privilegeExpiredTs);
+console.log("Token With Integer Number Uid: " + tokenA);
 
-// Build token with user account
-const tokenB = RtcTokenBuilder.buildTokenWithAccount(appID, appCertificate, channel_name, account, role, privilegeExpiredTs);
-console.log("Token With UserAccount: " + tokenB);
+// // Build token with user account
+// const tokenB = RtcTokenBuilder.buildTokenWithAccount(appID, appCertificate, channel_name, account, role, privilegeExpiredTs);
+// console.log("Token With UserAccount: " + tokenB);
 
 
 var data = req.body;
@@ -37,7 +37,7 @@ var body = data.body;
 console.log(req.query);
 var tokens = data.tokens;
 
-AdminSend.sendFcmNotification(req, res, title, tokenB, channel_name, body, tokens, account);
+AdminSend.sendFcmNotification(req, res, title, tokenA, channel_name, body, tokens, uid);
 
     }
 }
