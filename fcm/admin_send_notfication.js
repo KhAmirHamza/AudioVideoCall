@@ -6,8 +6,8 @@ var adminInit = false;
 
 module.exports = {
 
-  sendFcmNotification(req, res, title, call_token, channel_name, body, tokens, account) {
-    if (adminInit == false) {
+  sendFcmNotification(req, res, title, call_token, channel_name, body, tokens, uid) {
+    if (adminInit == false) { 
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
         databaseURL: 'https://rojgar-1b39c.firebaseio.com'
@@ -21,7 +21,7 @@ module.exports = {
         body: body,
         call_token: call_token,
         channel_name: channel_name,
-        account: account
+        uid: uid
       },
       // notification: {
       //   // "click_action" : ".MainActivity", 
