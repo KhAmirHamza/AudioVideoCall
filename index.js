@@ -17,7 +17,7 @@ app.get('/generateToken',function (req,res){
 
 app.post('/sendCallNotification', function (req, res) {
   //  SendCallNotification.sendCallNotification(req, res);
-  const{ type, channel_name} = req.query;
+  const{ type, channel_name, channelToken} = req.query;
   if (adminInit == false) { 
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
@@ -29,7 +29,8 @@ app.post('/sendCallNotification', function (req, res) {
   const message = {
     data: {
       type: type,
-      channel_name: channel_name
+      channel_name: channel_name,
+      channelToken: channelToken
     },
     // notification: {
     //   // "click_action" : ".MainActivity", 
