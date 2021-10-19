@@ -3,11 +3,17 @@ const { json } = require("body-parser");
 const app = express()
 const RtcToken = require('./rtc_token');
 const FCM = require('./fcm/fcmController')
+const SendCallNotification = require('./my_call/send_call_notification');
+
 //Middleware...
 app.use(express.json())
 app.use("/fcm", FCM);
 app.get('/generateToken',function (req,res){
     RtcToken.generateRtcToken(req, res);
+});
+
+app.post('/sendCallNotification', function (req, res) {
+    SendCallNotification.sendCallNotification(req, res);
 });
 
 app.get('/',function (req,res){
