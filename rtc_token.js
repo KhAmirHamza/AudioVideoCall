@@ -27,7 +27,7 @@ const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds
 // Build token with uid
 const tokenA = RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel_name, uid, user_role, privilegeExpiredTs);
 console.log("Token With Integer Number Uid: " + tokenA);
-res.send(tokenA);
+res.json({"token": tokenA});
 res.end();
 
 // Build token with user account
