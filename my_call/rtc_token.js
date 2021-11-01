@@ -1,7 +1,4 @@
 const {RtcTokenBuilder, RtmTokenBuilder, RtcRole, RtmRole} = require('agora-access-token')
-const AdminSend = require('./fcm/admin_send_notfication')
-
-
 
 module.exports = {
     generateRtcToken(req, res){

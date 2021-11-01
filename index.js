@@ -1,7 +1,7 @@
 const express = require('express')
 const { json } = require("body-parser");
 const app = express()
-const RtcToken = require('./rtc_token');
+const RtcToken = require('./my_call/rtc_token');
 const FCM = require('./fcm/fcmController');
 //const SendCallNotification = require('./my_call/send_call_notification');
 const admin = require('firebase-admin');
@@ -30,7 +30,6 @@ app.post('/sendCallNotification', function (req, res) {
     data: {
       type: type,
       channel_name: channel_name,
-      channelToken: channelToken
     },
     // notification: {
     //   // "click_action" : ".MainActivity", 
